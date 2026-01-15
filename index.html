@@ -1,168 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Web Profesional sobre Azure</title>
-    <style>
-        /* Reset */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Completo de Azure</title>
+<style>
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f4f8;
-            color: #333;
-        }
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
 
-        /* Header / Navegación */
-        header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: linear-gradient(90deg, #0078d4, #00bcf2);
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-        header h1 { font-size: 1.8rem; }
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        nav a:hover { text-decoration: underline; }
+/* Header / Navegación */
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(90deg, #0078d4, #00bcf2);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+header h1 { font-size: 1.8rem; }
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+nav a:hover { text-decoration: underline; }
 
-        /* Main content */
-        main { padding: 120px 20px 50px; max-width: 1200px; margin: auto; }
+/* Main content */
+main { padding: 120px 20px 50px; max-width: 1200px; margin: auto; }
 
-        /* Secciones */
-        section {
-            margin-bottom: 50px;
-            padding: 40px 20px;
-            border-radius: 12px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.4s, box-shadow 0.4s;
-        }
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        section h2 { 
-            margin-bottom: 20px; 
-            color: #0078d4; 
-            font-size: 1.6rem;
-        }
-        section p { margin-bottom: 15px; font-size: 1rem; }
+/* Secciones */
+section {
+    margin-bottom: 50px;
+    padding: 40px 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
+}
+section:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+section:nth-child(1) { animation-delay: 0.2s; }
+section:nth-child(2) { animation-delay: 0.4s; }
+section:nth-child(3) { animation-delay: 0.6s; }
+section:nth-child(4) { animation-delay: 0.8s; }
+section:nth-child(5) { animation-delay: 1s; }
 
-        /* Tarjetas */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-        .card {
-            background: linear-gradient(135deg, #0078d4, #00bcf2);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-        }
-        .card h3 { margin-bottom: 12px; font-size: 1.2rem; }
-        .card p { font-size: 0.95rem; }
+section h2 { 
+    margin-bottom: 20px; 
+    color: #0078d4; 
+    font-size: 1.6rem;
+}
+section p { margin-bottom: 15px; font-size: 1rem; }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #555;
-        }
+/* Tarjetas */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+.card {
+    background: linear-gradient(135deg, #0078d4, #00bcf2);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+.card h3 { margin-bottom: 12px; font-size: 1.2rem; }
+.card p { font-size: 0.95rem; }
 
-        /* Animaciones suaves al cargar sección */
-        section {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s forwards;
-        }
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
+/* Listas destacadas */
+ul { margin-left: 20px; margin-bottom: 15px; }
+li { margin-bottom: 8px; }
 
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #555;
+}
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            header { flex-direction: column; text-align: center; }
-            nav a { margin: 10px 5px; display: inline-block; }
-        }
-    </style>
+/* Animaciones */
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; }
+    nav a { margin: 10px 5px; display: inline-block; }
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Azure Web Pro</h1>
-        <nav>
-            <a href="#about">Sobre Azure</a>
-            <a href="#services">Servicios</a>
-            <a href="#info">Más Info</a>
-        </nav>
-    </header>
 
-    <main>
-        <section id="about">
-            <h2>¿Qué es Azure?</h2>
-            <p>Microsoft Azure es la plataforma en la nube de Microsoft que permite crear, desplegar y gestionar aplicaciones y servicios de forma global.</p>
-            <p>Puedes usarlo para <strong>web apps, bases de datos, máquinas virtuales, funciones serverless, almacenamiento y mucho más</strong>.</p>
-        </section>
+<header>
+    <h1>Portal Completo de Azure</h1>
+    <nav>
+        <a href="#about">Sobre Azure</a>
+        <a href="#services">Servicios</a>
+        <a href="#usecases">Casos de Uso</a>
+        <a href="#tutorials">Tutoriales</a>
+        <a href="#info">Más Info</a>
+    </nav>
+</header>
 
-        <section id="services">
-            <h2>Servicios Populares de Azure</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>App Service</h3>
-                    <p>Despliega aplicaciones web de forma rápida y escalable, sin preocuparte por la infraestructura.</p>
-                </div>
-                <div class="card">
-                    <h3>Functions</h3>
-                    <p>Ejecuta código serverless bajo demanda, ideal para tareas automatizadas y microservicios.</p>
-                </div>
-                <div class="card">
-                    <h3>Storage</h3>
-                    <p>Almacena archivos, bases de datos NoSQL y blobs con alta disponibilidad y seguridad.</p>
-                </div>
-                <div class="card">
-                    <h3>SQL Database</h3>
-                    <p>Base de datos relacional gestionada en la nube con escalabilidad automática.</p>
-                </div>
-                <div class="card">
-                    <h3>Virtual Machines</h3>
-                    <p>Crea servidores en la nube con el sistema operativo que necesites, totalmente configurables.</p>
-                </div>
-            </div>
-        </section>
+<main>
 
-        <section id="info">
-            <h2>Más Información</h2>
-            <p>Para aprender más sobre Azure y todos sus servicios, visita la página oficial:</p>
-            <p><a href="https://azure.microsoft.com/" target="_blank">https://azure.microsoft.com/</a></p>
-        </section>
-    </main>
+<!-- Sección Sobre Azure -->
+<section id="about">
+    <h2>¿Qué es Azure?</h2>
+    <p>Microsoft Azure es una plataforma de nube global que permite crear, desplegar y administrar aplicaciones y servicios a gran escala.</p>
+    <p>Ofrece más de 200 productos, incluyendo infraestructura como servicio (IaaS), plataforma como servicio (PaaS) y soluciones serverless.</p>
+    <ul>
+        <li>Web Apps, APIs y microservicios.</li>
+        <li>Bases de datos SQL, NoSQL y almacenamiento masivo.</li>
+        <li>Máquinas virtuales y contenedores.</li>
+        <li>Servicios de inteligencia artificial y machine learning.</li>
+    </ul>
+</section>
 
-    <footer>
-        &copy; 2026 Azure Web Pro
-    </footer>
+<!-- Sección Servicios -->
+<section id="services">
+    <h2>Servicios Populares de Azure</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>App Service</h3>
+            <p>Despliega aplicaciones web escalables sin preocuparte por la infraestructura.</p>
+        </div>
+        <div class="card">
+            <h3>Functions</h3>
+            <p>Ejecuta código serverless bajo demanda, ideal para microservicios y automatizaciones.</p>
+        </div>
+        <div class="card">
+            <h3>Storage</h3>
+            <p>Almacenamiento seguro de archivos, blobs, colas y tablas con alta disponibilidad.</p>
+        </div>
+        <div class="card">
+            <h3>SQL Database</h3>
+            <p>Base de datos relacional totalmente gestionada, con escalabilidad y seguridad integradas.</p>
+        </div>
+        <div class="card">
+            <h3>Virtual Machines</h3>
+            <p>Crea servidores en la nube con Windows o Linux, con total control sobre la configuración.</p>
+        </div>
+        <div class="card">
+            <h3>AI & Machine Learning</h3>
+            <p>Servicios de inteligencia artificial preentrenados y personalizados para tus aplicaciones.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sección Casos de Uso -->
+<section id="usecases">
+    <h2>Casos de Uso de Azure</h2>
+    <ul>
+        <li>Despliegue de aplicaciones web de alta disponibilidad.</li>
+        <li>Análisis de datos en tiempo real con Azure Synapse y Data Lake.</li>
+        <li>Automatización de procesos empresariales con Functions y Logic Apps.</li>
+        <li>Seguridad y monitoreo con Azure Security Center.</li>
+        <li>Desarrollo de chatbots y servicios de IA.</li>
+    </ul>
+</section>
+
+<!-- Sección Tutoriales -->
+<section id="tutorials">
+    <h2>Tutoriales y Recursos</h2>
+    <ul>
+        <li><a href="https://learn.microsoft.com/es-es/azure/" target="_blank">Documentación oficial de Azure</a></li>
+        <li><a href="https://learn.microsoft.com/es-es/training/azure/" target="_blank">Microsoft Learn: Cursos gratuitos de Azure</a></li>
+        <li><a href="https://azure.microsoft.com/es-es/resources/videos/" target="_blank">Videos y webinars de Azure</a></li>
+        <li><a href="https://github.com/Azure" target="_blank">Repositorios de GitHub de Azure</a></li>
+    </ul>
+</section>
+
+<!-- Sección Más Información -->
+<section id="info">
+    <h2>Más Información</h2>
+    <p>Visita la página oficial de Azure para obtener información completa sobre productos, precios y documentación técnica:</p>
+    <p><a href="https://azure.microsoft.com/" target="_blank">https://azure.microsoft.com/</a></p>
+</section>
+
+</main>
+
+<footer>
+    &copy; 2026 Portal Completo de Azure
+</footer>
+
 </body>
 </html>
