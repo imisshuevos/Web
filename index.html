@@ -3,177 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Ficticio de Azure</title>
-<style>
-/* Reset y tipografía */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f0f4f8; color: #333; line-height: 1.6; }
+<title>AZURE | The Cloud That Runs Reality</title>
 
-/* Header */
+<style>
+/* ===================== RESET ===================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+    background: #020617;
+    color: #e6f0ff;
+    overflow-x: hidden;
+}
+
+/* ===================== COSMIC BACKGROUND ===================== */
+.space {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 10% 20%, #003b8e, transparent 35%),
+        radial-gradient(circle at 90% 30%, #00e5ff, transparent 35%),
+        radial-gradient(circle at 50% 80%, #00113a, transparent 40%);
+    animation: spaceMove 25s infinite alternate;
+    z-index: -2;
+}
+@keyframes spaceMove {
+    100% { background-position: 100% 100%; }
+}
+
+/* ===================== STAR FIELD ===================== */
+.stars::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 80% 20%, white, transparent),
+        radial-gradient(1px 1px at 40% 70%, white, transparent),
+        radial-gradient(1px 1px at 60% 50%, white, transparent);
+    animation: stars 8s infinite linear;
+    opacity: .4;
+}
+@keyframes stars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+/* ===================== HEADER ===================== */
 header {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    background: linear-gradient(90deg, #0078d4, #00bcf2);
-    color: white;
-    padding: 15px 30px;
+    width: 100%;
+    top: 0;
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    background: rgba(2,6,23,0.6);
+    backdrop-filter: blur(20px);
     z-index: 1000;
 }
-header h1 { font-size: 1.8rem; }
-nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-nav a:hover { text-decoration: underline; }
-
-/* Main */
-main { padding: 120px 20px 50px; max-width: 1200px; margin: auto; }
-
-/* Secciones */
-section { margin-bottom: 50px; padding: 40px 20px; border-radius: 12px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.4s, box-shadow 0.4s; opacity: 0; transform: translateY(50px); animation: fadeInUp 1s forwards; }
-section:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
-section:nth-child(1) { animation-delay: 0.2s; }
-section:nth-child(2) { animation-delay: 0.4s; }
-section:nth-child(3) { animation-delay: 0.6s; }
-section:nth-child(4) { animation-delay: 0.8s; }
-section:nth-child(5) { animation-delay: 1s; }
-section h2 { margin-bottom: 20px; color: #0078d4; font-size: 1.6rem; }
-section p { margin-bottom: 15px; font-size: 1rem; }
-
-/* Cards */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
+header h1 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
 }
-.card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
-.card img { width: 100%; height: 150px; object-fit: cover; }
-.card-content { padding: 20px; }
-.card-content h3 { margin-bottom: 10px; color: #0078d4; }
-.card-content p { font-size: 0.95rem; }
+nav a {
+    margin-left: 30px;
+    color: #e6f0ff;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: .8;
+}
+nav a:hover { opacity: 1; color: #00e5ff; }
 
-/* Listas */
-ul { margin-left: 20px; margin-bottom: 15px; }
-li { margin-bottom: 8px; }
+/* ===================== HERO ===================== */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 140px 20px;
+}
+.hero h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    background: linear-gradient(90deg, #00e5ff, #0078d4, #00e5ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 4s infinite;
+}
+@keyframes glow {
+    50% { filter: drop-shadow(0 0 40px #00e5ff); }
+}
+.hero p {
+    max-width: 900px;
+    margin: 40px auto;
+    font-size: 1.3rem;
+    opacity: .9;
+}
+.hero button {
+    padding: 18px 50px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(90deg, #0078d4, #00e5ff);
+    color: white;
+    cursor: pointer;
+    transition: .4s;
+}
+.hero button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 60px #00e5ff;
+}
 
-/* Footer */
-footer { text-align: center; padding: 20px; font-size: 14px; color: #555; }
+/* ===================== SECTIONS ===================== */
+section {
+    max-width: 1400px;
+    margin: auto;
+    padding: 120px 30px;
+}
+section h3 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 80px;
+}
 
-/* Animaciones */
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+/* ===================== GLASS GRID ===================== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+.card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    padding: 40px;
+    transition: .5s;
+    position: relative;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    background: linear-gradient(120deg, transparent, #00e5ff, transparent);
+    opacity: 0;
+}
+.card:hover::before { opacity: .15; }
+.card:hover { transform: translateY(-20px) scale(1.04); }
+.card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #00e5ff;
+}
 
-/* Responsive */
-@media (max-width: 600px) {
-    header { flex-direction: column; text-align: center; }
-    nav a { margin: 10px 5px; display: inline-block; }
+/* ===================== POWER METRICS ===================== */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 40px;
+    text-align: center;
+}
+.metric span {
+    font-size: 4rem;
+    color: #00e5ff;
+}
+.metric p {
+    margin-top: 15px;
+    opacity: .85;
+}
+
+/* ===================== QUANTUM STRIP ===================== */
+.quantum {
+    background: linear-gradient(135deg, #0078d4, #00e5ff);
+    border-radius: 40px;
+    padding: 100px 40px;
+    text-align: center;
+}
+.quantum h3 {
+    color: white;
+}
+.quantum p {
+    font-size: 1.3rem;
+    margin: 30px auto;
+    max-width: 900px;
+}
+.quantum button {
+    background: white;
+    color: #0078d4;
+    font-weight: 700;
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+    text-align: center;
+    padding: 60px;
+    opacity: .6;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width: 800px){
+    header { padding: 20px; }
+    nav { display: none; }
 }
 </style>
 </head>
+
 <body>
+<div class="space"></div>
+<div class="stars"></div>
 
 <header>
-    <h1>Azure Ficticio</h1>
-    <nav>
-        <a href="#about">Sobre Azure</a>
-        <a href="#services">Servicios</a>
-        <a href="#usecases">Casos de Uso</a>
-        <a href="#tutorials">Tutoriales</a>
-        <a href="#info">Más Info</a>
-    </nav>
+    <h1>AZURE</h1>
 </header>
 
-<main>
-
-<section id="about">
-    <h2>¿Qué es Azure?</h2>
-    <p>Microsoft Azure es la plataforma de nube global de Microsoft para crear, desplegar y administrar aplicaciones y servicios.</p>
-    <p>Ofrece más de 200 productos y soluciones de IaaS, PaaS y serverless.</p>
-    <ul>
-        <li>Aplicaciones Web, APIs y microservicios.</li>
-        <li>Bases de datos SQL, NoSQL y almacenamiento masivo.</li>
-        <li>Máquinas virtuales y contenedores.</li>
-        <li>Servicios de inteligencia artificial y Machine Learning.</li>
-    </ul>
-</section>
-
-<section id="services">
-    <h2>Servicios Populares de Azure</h2>
-    <div class="cards">
-        <div class="card">
-            <img src="https://azurecomcdn.azureedge.net/cvt-09f3a3df76a1c9aab39f2e9339d9931b1b06c5d6ef3a7b27c4f6b8425aeb3df2/images/page/services/app-service.svg" alt="App Service">
-            <div class="card-content">
-                <h3>App Service</h3>
-                <p>Despliega aplicaciones web escalables sin preocuparte por la infraestructura.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://azurecomcdn.azureedge.net/cvt-4b7e56d5b021db2f9d53f70f88eacdf30d8b4c9a3f5f55e7c28f7f6e59c80f3b/images/page/services/functions.svg" alt="Functions">
-            <div class="card-content">
-                <h3>Functions</h3>
-                <p>Ejecuta código serverless bajo demanda, ideal para microservicios y automatizaciones.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://azurecomcdn.azureedge.net/cvt-1b5db2c742798ee87a7d1c62c8e7f537c7c90a07f0a3c64256b2c0b789df60a3/images/page/services/storage.svg" alt="Storage">
-            <div class="card-content">
-                <h3>Storage</h3>
-                <p>Almacenamiento seguro de archivos, blobs, colas y tablas con alta disponibilidad.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://azurecomcdn.azureedge.net/cvt-3f71b6b72f5ed90f9856d17e8f6b1f6f962ec6d2dc84a489d9e9d9c6d7f9b1a3/images/page/services/sql-database.svg" alt="SQL Database">
-            <div class="card-content">
-                <h3>SQL Database</h3>
-                <p>Base de datos relacional gestionada, con escalabilidad y seguridad integradas.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://azurecomcdn.azureedge.net/cvt-6b7e6b734c2f9823f26b8c1db8b3f9b9b0c6f9d1f3c0c4f1b6b2d5b6a7c6b1f3/images/page/services/virtual-machines.svg" alt="Virtual Machines">
-            <div class="card-content">
-                <h3>Virtual Machines</h3>
-                <p>Crea servidores en la nube con Windows o Linux, totalmente configurables.</p>
-            </div>
-        </div>
+<section class="hero">
+    <div>
+        <h2>The Cloud That Runs Reality</h2>
+        <p>
+            Azure no es solo infraestructura.  
+            Es la base digital del planeta: inteligencia artificial, datos, seguridad,
+            computación cuántica y el futuro de la humanidad.
+        </p>
+        <button>ENTER THE CLOUD</button>
     </div>
 </section>
 
-<section id="usecases">
-    <h2>Casos de Uso de Azure</h2>
-    <ul>
-        <li>Despliegue de aplicaciones web de alta disponibilidad.</li>
-        <li>Análisis de datos en tiempo real con Azure Synapse y Data Lake.</li>
-        <li>Automatización de procesos empresariales con Functions y Logic Apps.</li>
-        <li>Seguridad y monitoreo con Azure Security Center.</li>
-        <li>Desarrollo de chatbots y servicios de IA.</li>
-    </ul>
+<section>
+    <h3>Planet-Scale Capabilities</h3>
+    <div class="metrics">
+        <div class="metric"><span>∞</span><p>Escalabilidad</p></div>
+        <div class="metric"><span>60+</span><p>Regiones Globales</p></div>
+        <div class="metric"><span>Zero</span><p>Trust Security</p></div>
+        <div class="metric"><span>AI</span><p>By Default</p></div>
+    </div>
 </section>
 
-<section id="tutorials">
-    <h2>Tutoriales y Recursos</h2>
-    <ul>
-        <li><a href="https://learn.microsoft.com/es-es/azure/" target="_blank">Documentación oficial de Azure</a></li>
-        <li><a href="https://learn.microsoft.com/es-es/training/azure/" target="_blank">Microsoft Learn: Cursos gratuitos de Azure</a></li>
-        <li><a href="https://azure.microsoft.com/es-es/resources/videos/" target="_blank">Videos y webinars de Azure</a></li>
-        <li><a href="https://github.com/Azure" target="_blank">Repositorios de GitHub de Azure</a></li>
-    </ul>
+<section>
+    <h3>Core Pillars</h3>
+    <div class="grid">
+        <div class="card"><h4>Artificial Intelligence</h4><p>Modelos fundacionales, copilots, visión, lenguaje y razonamiento.</p></div>
+        <div class="card"><h4>Global Cloud</h4><p>Infraestructura hiperdistribuida con latencia mínima.</p></div>
+        <div class="card"><h4>Hybrid & Edge</h4><p>Azure funciona en la nube, en tu empresa y en el borde.</p></div>
+        <div class="card"><h4>Quantum Ready</h4><p>Preparado para la siguiente era computacional.</p></div>
+        <div class="card"><h4>Developer Velocity</h4><p>GitHub, DevOps y CI/CD integrados.</p></div>
+        <div class="card"><h4>Unbreakable Security</h4><p>Defensa avanzada a escala planetaria.</p></div>
+    </div>
 </section>
 
-<section id="info">
-    <h2>Más Información</h2>
-    <p>Visita la página oficial de Azure para información completa sobre productos, precios y documentación técnica:</p>
-    <p><a href="https://azure.microsoft.com/" target="_blank">https://azure.microsoft.com/</a></p>
+<section>
+    <div class="quantum">
+        <h3>Build What Has Never Existed</h3>
+        <p>
+            Desde una simple web hasta sistemas que sostienen gobiernos,
+            bancos y satélites.  
+            Azure es la plataforma donde las ideas se convierten en realidad.
+        </p>
+        <button>START FOR FREE</button>
+    </div>
 </section>
-
-</main>
 
 <footer>
-    &copy; 2026 Portal Ficticio de Azure.
+    © 2026 Azure · The Best Website Ever Created
 </footer>
 
 </body>
