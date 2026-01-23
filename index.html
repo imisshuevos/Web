@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZURE</title>
+
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+    background: #020617;
+    color: #e6f0ff;
+    overflow-x: hidden;
+}
+
+
+.space {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 10% 20%, #003b8e, transparent 35%),
+        radial-gradient(circle at 90% 30%, #00e5ff, transparent 35%),
+        radial-gradient(circle at 50% 80%, #00113a, transparent 40%);
+    animation: spaceMove 25s infinite alternate;
+    z-index: -2;
+}
+@keyframes spaceMove {
+    100% { background-position: 100% 100%; }
+}
+
+.stars::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 80% 20%, white, transparent),
+        radial-gradient(1px 1px at 40% 70%, white, transparent),
+        radial-gradient(1px 1px at 60% 50%, white, transparent);
+    animation: stars 8s infinite linear;
+    opacity: .4;
+}
+@keyframes stars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(2,6,23,0.6);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+header h1 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+nav a {
+    margin-left: 30px;
+    color: #e6f0ff;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: .8;
+}
+nav a:hover { opacity: 1; color: #00e5ff; }
+
+
+.hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 140px 20px;
+}
+.hero h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    background: linear-gradient(90deg, #00e5ff, #0078d4, #00e5ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 4s infinite;
+}
+@keyframes glow {
+    50% { filter: drop-shadow(0 0 40px #00e5ff); }
+}
+.hero p {
+    max-width: 900px;
+    margin: 40px auto;
+    font-size: 1.3rem;
+    opacity: .9;
+}
+.hero button {
+    padding: 18px 50px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(90deg, #0078d4, #00e5ff);
+    color: white;
+    cursor: pointer;
+    transition: .4s;
+}
+.hero button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 60px #00e5ff;
+}
+
+section {
+    max-width: 1400px;
+    margin: auto;
+    padding: 120px 30px;
+}
+section h3 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+.card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    padding: 40px;
+    transition: .5s;
+    position: relative;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    inset:0;
+    border-radius: 25px;
+    background: linear-gradient(120deg, transparent, #00e5ff, transparent);
+    opacity:0;
+    
+}
+.card:hover::before { opacity: .15; }
+.card:hover { transform: translateY(-20px) scale(1.04); }
+.card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #00e5ff;
+}
+
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 40px;
+    text-align: center;
+}
+.metric span {
+    font-size: 4rem;
+    color: #00e5ff;
+}
+.metric p {
+    margin-top: 15px;
+    opacity: .85;
+}
+
+
+.quantum {
+    background: linear-gradient(135deg, #0078d4, #00e5ff);
+    border-radius: 40px;
+    padding: 100px 40px;
+    text-align: center;
+}
+.quantum h3 {
+    color: white;
+}
+.quantum p {
+    font-size: 1.3rem;
+    margin: 30px auto;
+    max-width: 900px;
+}
+.quantum button {
+    background: white;
+    color: #0078d4;
+    font-weight: 700;
+}
+
+
+footer {
+    text-align: center;
+    padding: 60px;
+    opacity: .6;
+}
+
+
+@media(max-width: 800px){
+    header { padding: 20px; }
+    nav { display: none; }
+}
+</style>
+</head>
+
+<body>
+<div class="space"></div>
+<div class="stars"></div>
+
+<header>
+    <h1>Pagina Azure ficticia</h1>
+</header>
+
+<section class="hero">
+    <div>
+        <h2>La Nube Que Gobierna La Realidad</h2>
+        <p>
+            Azure no es solo infraestructura.  
+            Es la base digital del planeta: inteligencia artificial, datos, seguridad,
+            computación cuántica y el futuro de la humanidad.
+        </p>
+        <button>ENTRE EN LA NUBE</button>
+    </div>
+</section>
+
+<section>
+    <h3>Capacidades a Escalas Planetarias</h3>
+    <div class="metrics">
+        <div class="metric"><span>∞</span><p>Escalabilidad</p></div>
+        <div class="metric"><span>60+</span><p>Regiones Globales</p></div>
+        <div class="metric"><span>Zero</span><p>Trust Security</p></div>
+        <div class="metric"><span>IA</span><p>Por Defecto</p></div>
+    </div>
+</section>
+
+<section>
+    <h3>Pillares Centrales</h3>
+    <div class="grid">
+        <div class="card"><h4>Inteligencia Artifical</h4><p>Modelos fundacionales, copilots, visión, lenguaje y razonamiento.</p></div>
+        <div class="card"><h4>Nube Global</h4><p>Infraestructura hiperdistribuida con latencia mínima.</p></div>
+        <div class="card"><h4>Hibrido y de vanguardia</h4><p>Azure funciona en la nube, en tu empresa y en el borde.</p></div>
+        <div class="card"><h4>Listo para lo cuantico</h4><p>Preparado para la siguiente era computacional.</p></div>
+        <div class="card"><h4>Velocidad del desarollador</h4><p>GitHub, DevOps y CI/CD integrados.</p></div>
+        <div class="card"><h4>Seguridad irrompible</h4><p>Defensa avanzada a escala planetaria.</p></div>
+    </div>
+</section>
+
+<section>
+    <div class="quantum">
+        <h3>Construye lo que nunca ha existido</h3>
+        <p>
+            Desde una simple web hasta sistemas que sostienen gobiernos,
+            bancos y satélites.  
+            Azure es la plataforma donde las ideas se convierten en realidad.
+        </p>
+        <button>COMIENZA GRATIS</button>
+    </div>
+</section>
+
+<footer>
+    © 2026 Azure · Pagina ficticia de azuree
+</footer>
+
+</body>
+</html>
